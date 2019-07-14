@@ -36,5 +36,5 @@ x apply discount rules to the total
     that the rule should be applied when calculating the total]
     > add rule for 3 of the same items which has a lower price than 3 individual items
 
-- throw exception for item added without a price
+x throw exception for item added without a price
 

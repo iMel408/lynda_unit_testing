@@ -8,6 +8,7 @@ from checkout import Checkout
 
 @pytest.fixture()
 def checkout():
+
     checkout = Checkout()
     checkout.add_item_price('a', 1)
     checkout.add_item_price('b', 2)
@@ -33,18 +34,28 @@ def test_calculate_total(checkout):
 
 
 def test_correct_total_with_multi_items(checkout):
+
     checkout.add_item('a')
     checkout.add_item('b')
     assert checkout.calculate_total() == 3
 
 
 def test_add_discount_rule(checkout):
+
     checkout.add_discount('a', 3, 2)
+
 
 # @pytest.mark.skip
 def test_apply_discount_rule(checkout):
+
     checkout.add_discount('a', 3, 2)
     checkout.add_item('a')
     checkout.add_item('a')
     checkout.add_item('a')
     assert checkout.calculate_total() == 2
+
+
+def test_exception_with_no_price(checkout):
+
+    with pytest.raises(Exception):
+        checkout.add_item('c')

@@ -2,10 +2,12 @@ class Checkout:
     class Discount:
 
         def __init__(self, num_items, price):
+
             self.num_items = num_items
             self.price = price
 
     def __init__(self):
+
         self.prices = {}
         self.discounts = {}
         self.items = {}
@@ -16,10 +18,13 @@ class Checkout:
         self.discounts[item] = discount
 
     def add_item_price(self, item, price):
+
         self.prices[item] = price
 
     def add_item(self, item):
 
+        if item not in self.prices:
+            raise Exception('Item has no price')
         if item in self.items:
             self.items[item] += 1
         else:
