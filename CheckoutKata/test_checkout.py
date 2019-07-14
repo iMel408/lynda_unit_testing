@@ -1,6 +1,7 @@
 import pytest
 from checkout import Checkout
 
+
 # def test_can_instantiate_checkout():
 #     co = Checkout()
 # the above test is no longer needed, covered by next test.
@@ -8,6 +9,8 @@ from checkout import Checkout
 @pytest.fixture()
 def checkout():
     checkout = Checkout()
+    checkout.add_item_price('a', 1)
+    checkout.add_item_price('b', 2)
     return checkout
 
 
@@ -24,16 +27,24 @@ def checkout():
 
 
 def test_calculate_total(checkout):
-
-    checkout.add_item_price('a', 1)
-    checkout.add_item('a') # add item to checkout
+    # checkout.add_item_price('a', 1) # repetitive - added to test fixture
+    checkout.add_item('a')  # add item to checkout
     assert checkout.calculate_total() == 1
 
 
 def test_correct_total_with_multi_items(checkout):
-
-    checkout.add_item_price('a', 1)
-    checkout.add_item_price('b', 2)
     checkout.add_item('a')
     checkout.add_item('b')
     assert checkout.calculate_total() == 3
+
+
+def test_add_discount_rule(checkout):
+    checkout.add_discount('a', 3, 2)
+
+# @pytest.mark.skip
+def test_apply_discount_rule(checkout):
+    checkout.add_discount('a', 3, 2)
+    checkout.add_item('a')
+    checkout.add_item('a')
+    checkout.add_item('a')
+    assert checkout.calculate_total() == 2

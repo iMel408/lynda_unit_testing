@@ -19,18 +19,22 @@ x calculate the current total
         > then call calculate total method and verify that it returns one
 
 x add multiple items and get correct total
-    [add prices for multiple items, add mulitple items to the checkout and
+    [add prices for multiple items, add multiple items to the checkout and
     verify the correct total is calculated]
         > add price for two items
         > add two items to the checkout
         > verify that the correct total is calculated
 
-- add discount rules
+x add discount rules
     [add a method to Checkout to allow me to submit a discount rule]
     parameters needed:
         > item type
         > number of items required for discount
         > discounted price
-- apply discount rules to the total
+x apply discount rules to the total
+    [add a discount rule and then add enough items to the checkout
+    that the rule should be applied when calculating the total]
+    > add rule for 3 of the same items which has a lower price than 3 individual items
+
 - throw exception for item added without a price
 
