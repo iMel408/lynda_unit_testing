@@ -11,9 +11,26 @@ ToDo:
 x create an instance of the checkout class
 x add an item price
 x add an item
-- calculate the current total
-- add multiple items and get correct total
+x calculate the current total
+    [update checkout class to have public method for calculating
+        the current total and verify that total is correct for one item]
+        > add one price for item 'a'
+        > and add one item 'a' to the list of checkout items
+        > then call calculate total method and verify that it returns one
+
+x add multiple items and get correct total
+    [add prices for multiple items, add mulitple items to the checkout and
+    verify the correct total is calculated]
+        > add price for two items
+        > add two items to the checkout
+        > verify that the correct total is calculated
+
 - add discount rules
+    [add a method to Checkout to allow me to submit a discount rule]
+    parameters needed:
+        > item type
+        > number of items required for discount
+        > discounted price
 - apply discount rules to the total
 - throw exception for item added without a price
 
